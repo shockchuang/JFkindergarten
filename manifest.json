@@ -4,7 +4,7 @@
   "icons": [
     {
       "src": "assets/images/JFicon_128.png",
-      "sizes": "128x128",
+      "sizes": "128x85",
       "type": "image/png"
     },
     {
@@ -14,28 +14,28 @@
     },
     {
       "src": "assets/images/JFicon_152.png",
-      "sizes": "152x152",
+      "sizes": "152x101",
       "type": "image/png"
     },
     {
       "src": "assets/images/JFicon_192.png",
-      "sizes": "192x192",
+      "sizes": "192x128",
       "type": "image/png"
     },
     {
       "src": "assets/images/JFicon_256.png",
-      "sizes": "256x256",
+      "sizes": "256x170",
       "type": "image/png"
     },
     {
       "src": "assets/images/JFicon_512.png",
-      "sizes": "512x512",
+      "sizes": "512x341",
       "type": "image/png"
     }
   ],
   "lang": "zh-tw",
   "start_url": "index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "any",
   "background_color": "white",
   "theme_color": "white"
