@@ -5,12 +5,17 @@
 
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!--====== Title ======-->
     <title>嘉豐非營利幼兒園-學生接送APP</title>
+    <link rel="manifest" href="manifest.json">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="apple-touch-icon" href="assets/images/JFicon_152.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="white" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="學生接送APP">
+    <meta name="msapplication-TileImage" content="assets/images/JFicon_144.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/JFicon_50x50.png" type="image/png">
@@ -43,10 +48,10 @@
                             <a class="navbar-brand" href="index.html">
                                 <img src="assets/images/FJ_Logo.png" alt="Logo" height="90">
                             </a>
-                        </nav> 
+                        </nav>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         </div>
 
         <div id="home">
@@ -89,6 +94,9 @@
     </header>
 
     <!--====== HEADER PART ENDS ======-->
+    <script src="assets/js/main.js"></script>
+
+
     <!--====== jquery js ======-->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -108,8 +116,8 @@
             YourClass = decodeURI(strUrl.split("?")[1].split("&")[1].split("=")[1]);
             YourSerialNumber = decodeURI(strUrl.split("?")[1].split("&")[2].split("=")[1]);
             send(YourNo, YourClass, YourSerialNumber);
-        //} else {
-        //    swal("掃描失敗", "請再重新掃描QRCODE!!", "error");
+            //} else {
+            //    swal("掃描失敗", "請再重新掃描QRCODE!!", "error");
         }
 
         function send(no, cls, sn) {
@@ -140,7 +148,7 @@
         });
 
         $('#BackHome').click(function () {
-            location.href ='index.html';
+            location.href = 'index.html';
         });
 
     </script>

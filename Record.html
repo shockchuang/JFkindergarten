@@ -71,33 +71,31 @@
 
     <script src="assets/js/sweetalert.min.js" type="text/javascript"></script>
 
-
-
     <script>
         $('#BackHome').click(function () {
             location.href = 'index.html';
         });
 
-        function send(no, cls, sn) {
+        function readData() {
 
             $.ajax({
                 url: "https://script.google.com/macros/s/AKfycbyXVsjvgqMkHGRUKmzw7xq7VkAAaWT3DXQ45vpbAyUcKi_WM18/exec",
                 data: {
-                    "method ": "write",
-                    "emplyid": no,
-                    "location": sn,
-                    "locationNM": cls
+                    "method ": "read"
                 },
                 success: function (response) {
-                    if (response == "成功") {
-                        const d = new Date();
-                        swal(sn, d.getHours() + ':' + d.getMinutes() + "  下課", "success");
-                    }
+                    console.log(response);
+                    //if (response == "成功") {
+                    //    const d = new Date();
+                    //    swal(sn, d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+                    //}
                 },
             });
 
 
         };
+
+        //readData();
 
    </script>
 
