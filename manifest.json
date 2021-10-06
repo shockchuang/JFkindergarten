@@ -35,7 +35,7 @@
   ],
   "lang": "zh-tw",
   "start_url": "index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "any",
   "background_color": "white",
   "theme_color": "white"
