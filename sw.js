@@ -1,14 +1,14 @@
 var cacheName = 'hello-JFkindergarten-pwa';
 var filesToCache = [
   '/',
-    '/index.html',
-    '/assets/css/default.css',
-    '/assets/css/index.css',
-    '/assets/css/style.css',
-    '/assets/css/rwd.css',
-    '/assets/css/sweetalert.css',
-    '/assets/images/header-bg.jpg',
-    '/assets/js/main.js'
+    'index.html',
+    'assets/css/default.css',
+    'assets/css/index.css',
+    'assets/css/style.css',
+    'assets/css/rwd.css',
+    'assets/css/sweetalert.css',
+    'assets/images/header-bg.jpg',
+    'assets/js/main.js'
 ];
 
 /* Start the service worker and cache all of the app's content */
