@@ -1,6 +1,6 @@
 {
-  "name": "¹ÅÂ×«DÀç§Q¥®¨à¶é-¾Ç¥Í±µ°eAPP",
-  "short_name": "¾Ç¥Í±µ°eAPP",
+  "name": "å˜‰è±éç‡Ÿåˆ©å¹¼å…’åœ’-å­¸ç”Ÿæ¥é€APP",
+  "short_name": "å­¸ç”Ÿæ¥é€APP",
   "icons": [
     {
       "src": "assets/images/JFicon_128.png",
@@ -34,7 +34,7 @@
     }
   ],
   "lang": "zh-tw",
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "display": "fullscreen",
   "orientation": "any",
   "background_color": "white",
