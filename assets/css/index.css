@@ -1,0 +1,121 @@
+﻿.mainmenu{ 
+	/*background-color: rgb(247,248,248);*/ 
+	/*padding: 20px 0; */
+	/*border-top: 5px solid #DEDEDE;*/
+  /*  margin-top:150px;*/
+}
+
+
+.mainmenu .container, .maincontent .container {
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
+.box, .box-person {
+    position: relative;
+    float: left;
+    text-align: center;
+    background-color: rgb(255,255,255);
+    cursor: pointer;
+}
+
+
+
+.corner{ position: absolute; top: 0;left: 0; height: 15%;}
+
+.absent-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20%;
+}
+
+.tr-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15%;
+}
+.box .menuitem, .box-person .menuitem {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+
+
+    .box-person .menuitem button {
+        text-align:right;
+    }
+
+.menuitem img{
+	width: 70%;
+	height: auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.menuitem h3{
+	color: rgb(0,0,0);
+	text-align: center;
+	margin:0;
+	/*height: 30px;*/
+}
+.box:hover .menuitem h3, .box-person:hover .menuitem h3, .selected .menuitem h3 {
+    /* color: rgb(255,255,255); */
+    color: rgb(0,0,0);
+}
+.box:hover .svg path ,.selected .svg path, 
+.box:hover .svg circle, .selected .svg circle, 
+.box:hover .svg rect, .selected .svg rect,
+.box:hover .svg polygon, .selected .svg polygon{fill: #FFF !important;}
+
+
+
+.submenu h3{
+	color: rgb(255,255,255);
+	margin: 5px 0 5px 5px;
+}
+.submenu ul{
+	padding: 0;
+	min-height:100px;
+}
+.submenu li{
+	list-style: none;
+	float: left;
+}
+.submenu li a{
+	display: block;
+	color: rgb(62,58,57);
+	padding: 10px 10px 10px 15px;
+	text-decoration: none;
+}
+.submenu li a:hover{
+	/*background:url('../img/icon-arrow04.png') left center no-repeat rgb(222,235,191);*/
+	background-color: rgb(222,235,191);
+	color: rgb(0,0,0);
+}
+.close{
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	cursor: pointer;
+}
+.submenu {
+    display: none;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: rgb(255,255,255);
+    padding: 10px;
+    border: 1px solid #e6b980;
+    border-top: 5px solid #e6b980;
+}
+
+
+
+
