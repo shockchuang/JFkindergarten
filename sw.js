@@ -1,4 +1,4 @@
-var cacheName = 'hello-JFkindergarten-pwa';
+var cacheName = 'hello-pwa';
 var filesToCache = [
   '/',
     'index.html',
