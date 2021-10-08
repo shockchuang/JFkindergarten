@@ -99,12 +99,7 @@
             var dataset = [];
 
             var a = {
-                sheetUrl: '你的試算表網址',
-                sheetTag: '工作表1',
-                row: 1,
-                col: 1,
-                endRow: 5,
-                endCol: 4
+                sheetTag: 0,
             };
             $.get('https://script.google.com/macros/s/AKfycbzYSDvvRiyv9wkxq0xNszbDSLguxHmoXn1ZflIqxBB15xak5A4q/exec', a, function (data) {
                 var arrNo = data.data.編號;
@@ -142,7 +137,7 @@
                     showColumns: false, //顯示/隱藏哪些欄位
                     showToggle: false, //名片式/table式切換
                     showPaginationSwitch: false, //分頁/不分頁切換
-                    showRefresh: true, //重新整理
+                    showRefresh: false, //重新整理
                     search: true, //查詢
 
                     //showExport: true,//工具栏上显示导出按钮
