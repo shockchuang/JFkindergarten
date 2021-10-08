@@ -1,0 +1,129 @@
+﻿<!doctype html>
+<html>
+
+<head>
+
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>嘉豐非營利幼兒園-學生接送APP</title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/JFicon_50x50.png" type="image/png">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+
+</head>
+
+<body>
+
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="navgition">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/images/FJ_Logo.png" alt="Logo" height="90">
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="home">
+            <div class="container-fluid mainmenu">
+                <div id="show" style="background-color:white; font-size:2.5vw;text-align:center;">
+                    <label>請掃描barcode：</label>
+                    <input id="inputbarcode" type="text" />
+
+                </div>
+            </div>
+        </div> <!-- header content -->
+
+        <div id="BackHome" style="position: fixed; bottom: 1em; right: 1em;cursor: pointer;">
+            <img width="50" src="assets/images/home.svg">
+        </div>
+
+    </header>
+
+    <!--====== HEADER PART ENDS ======-->
+    <!--====== jquery js ======-->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/sweetalert.min.js" type="text/javascript"></script>
+
+
+
+
+    <script>
+        $('#BackHome').click(function () {
+            location.href = 'index.html';
+        });
+
+        $("#inputbarcode").focus();
+
+        $("#inputbarcode").change(function () {
+            var value = $(this).val();
+           // console.log(value.length);
+            getRandomData(value);
+        });
+
+        function getRandomData(vbarcode) {
+
+            var a = {
+                barcode: vbarcode,
+            };
+            $.get('https://script.google.com/macros/s/AKfycbwTJQW1j8k1Q8jGCWh0cuBLA20GMM1opd9pVf5EHcYMIxXWvkQa/exec', a, function (data) {
+               // console.log(data);
+
+                if (data == "比對失敗") {
+                    swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
+                    $("#inputbarcode").val('');
+                    $("#inputbarcode").focus();
+                } else {
+                    var data_s = data.split("/");
+                    const d = new Date();
+                    if (parseInt(d.getMinutes()) < 10) {
+                        swal(data_s[1], d.getHours() + ':0' + d.getMinutes() + "  下課", "success");
+                    } else {
+                        swal(data_s[1], d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+                    }
+                    
+                    $("#inputbarcode").val('');
+                    $("#inputbarcode").focus();
+                }
+
+
+            });
+        }
+
+       //getRandomData('109A020021001');
+
+    </script>
+
+</body>
+
+</html>
