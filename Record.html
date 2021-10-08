@@ -180,52 +180,6 @@
 
         getRandomData();
 
-        function Search() {
-            /* $.get("https://script.google.com/macros/s/AKfycbzLUJ4B_XeWj-UQ7KFM7KHGRay2QswCIK6wx4KXnPAQHUKF2Ug/exec", {
-                         "method": "read"
-                     },
-                     function (data) {
-                         document.write("--------------------------<br>");
-                         document.write("No.,Name,Score <br>"+data+"<br>");
-                         document.write("--------------------------<br>");
-                     });*/
-            var $show = $('#show');
-            var a = {
-                sheetUrl: '你的試算表網址',
-                sheetTag: '工作表1',
-                row: 1,
-                col: 1,
-                endRow: 5,
-                endCol: 4
-            };
-            $.get('https://script.google.com/macros/s/AKfycbzYSDvvRiyv9wkxq0xNszbDSLguxHmoXn1ZflIqxBB15xak5A4q/exec', a, function (data) {
-                // console.log(data);
-                // console.log(data.data.編號);
-                var arrNo = data.data.編號;
-                var arrNM = data.data.小朋友姓名;
-                var arrClass = data.data.班級;
-                var arrTime = data.data.下課時間;
-                /* var d = data.split(',');  //把傳出來的字串分割成陣列
-                 var arr = [];  */
-                var vTable = '<table class="table table-striped"><thead><tr><th scope="col">編號</th><th scope="col">小朋友姓名</th><th scope="col">班級</th><th scope="col">下課時間</th></tr></thead><tbody>';
-
-                for (var i = 0; i < arrNo.length; i++) {
-                    const event = new Date(arrTime[i]);
-                    if (event.toLocaleString().startsWith('2021/10/7')) {
-                        vTable += '<tr><th scope="row">' + arrNo[i] + '</th><td>' + arrNM[i] + '</td><td>' + arrClass[i] + '</td><td>' + event.toLocaleString() + '</td></tr>';
-                    }
-                    //var dd=$.format.date(event, 'yyyy/MM/dd HH:mm');
-
-
-                }
-                vTable += '</tbody></table>';
-                $show.append(vTable);
-
-            });
-
-        }
-
-                                            //Search();
 
     </script>
 

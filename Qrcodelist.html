@@ -17,6 +17,9 @@
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
 
     <!--====== Default css ======-->
     <link rel="stylesheet" href="assets/css/default.css">
@@ -24,8 +27,6 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <link href="assets/css/index.css" rel="stylesheet">
-    <link href="assets/css/rwd.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 
 </head>
@@ -51,7 +52,10 @@
 
         <div id="home">
             <div class="container-fluid mainmenu">
-
+                <div id="show" style="background-color:white;">
+                    <table id="demo" data-sort-name="no">
+                    </table>
+                </div>
             </div>
         </div> <!-- header content -->
 
@@ -67,10 +71,19 @@
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="assets/js/bootstrap.min.js"></script>
-
+    <!--<script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap-table.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>-->
     <script src="assets/js/sweetalert.min.js" type="text/javascript"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <!--bootstrap-table-export-->
 
 
     <script>
@@ -78,28 +91,95 @@
             location.href = 'index.html';
         });
 
-        function send(no, cls, sn) {
 
-            $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbyXVsjvgqMkHGRUKmzw7xq7VkAAaWT3DXQ45vpbAyUcKi_WM18/exec",
-                data: {
-                    "method ": "write",
-                    "emplyid": no,
-                    "location": sn,
-                    "locationNM": cls
-                },
-                success: function (response) {
-                    if (response == "成功") {
-                        const d = new Date();
-                        swal(sn, d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+
+        function getRandomData() {
+
+
+            var dataset = [];
+
+            var a = {
+                sheetTag: 1,
+            };
+            $.get('https://script.google.com/macros/s/AKfycbzYSDvvRiyv9wkxq0xNszbDSLguxHmoXn1ZflIqxBB15xak5A4q/exec', a, function (data) {
+                var arrNo = data.data.編號;
+                var arrNM = data.data.小朋友姓名;
+                var arrClass = data.data.班級;
+                var arrCode = data.data.QRCODE認證碼;
+                for (var i = 0; i < arrNo.length; i++) {
+                    dataset.push({
+                        no: arrNo[i],
+                        name: arrNM[i],
+                        class: arrClass[i],
+                        code: arrCode[i]
+                    });
+
+                }
+
+                var h = ($(window).height() - 180);
+
+                $('#demo').bootstrapTable({
+                    columns: [ //欄位設定
+                        { field: 'no', title: '編號', align: 'center', width: 120, visible: true, sortable: true },
+                        { field: 'name', title: '小朋友姓名', align: 'left', width: 200, visible: true },
+                        { field: 'class', title: '班級', align: 'left', width: 200, visible: true },
+                        { field: 'code', title: 'QRCODE認證碼', align: 'left', width: 200, visible: true }
+                    ],
+                    classes: 'table table-striped',
+                    data: dataset,//所有資料
+                    uniqueId: 'no', //哪一個欄位是key
+                    sortName: 'no', //依照那個欄位排序
+                    height: h,
+                    pagination: true, //使否要分頁
+
+                    //可於ToolBar上顯示的按鈕
+                    showColumns: false, //顯示/隱藏哪些欄位
+                    showToggle: false, //名片式/table式切換
+                    showPaginationSwitch: false, //分頁/不分頁切換
+                    showRefresh: false, //重新整理
+                    search: true, //查詢
+
+                    //showExport: true,//工具栏上显示导出按钮
+                    //exportDataType: $(this).val(),//显示导出范围
+                    //exportTypes: ['json', 'xml', 'png', 'csv', 'txt', 'sql', 'doc', 'excel', 'xlsx', 'pdf'],//导出格式
+                    //exportOptions: {
+                    //    //ignoreColumn: [0,0],            //忽略某一列的索引
+                    //    fileName: '數據導出',              //文件名稱設置
+                    //    worksheetName: 'Sheet1',          //表格工作區名稱
+                    //    tableName: '商品數據表',
+                    //    excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+                    //    //onMsoNumberFormat: DoOnMsoNumberFormat
+                    //},
+
+                    //onPageChange: function (currentPage, pageSize) {
+                    //    console.log("目前頁數:" + currentPage + ",一頁顯示:" + pageSize + "筆");
+                    //},
+                    pageSize: 10, //一頁顯示幾筆
+                    pageList: [10, 20, 50, 100], //一頁顯示幾筆的選項
+
+                    formatRecordsPerPage: function (pageSize) {
+                        return '&nbsp;&nbsp;每頁顯示' + pageSize + '筆';
+                    },
+                    formatShowingRows: function (fromIndex, toIndex, totalSize) {
+                        //目前第幾頁
+                        //  var currentPage = Math.ceil(fromIndex / this.pageSize);
+                        //總共幾頁
+                        //   var totalPageCount = Math.ceil(totalSize / this.pageSize);
+                        //     return '第' + currentPage + '頁&nbsp;&nbsp;共' + totalPageCount + '頁&nbsp;&nbsp;共' + totalSize + '筆';
+                        return '總共' + totalSize + '筆';
                     }
-                },
+                });
+
+
             });
 
+            //console.log(dataset);
+            //return dataset;
+        }
 
-        };
+        getRandomData();
 
-   </script>
+    </script>
 
 </body>
 

@@ -123,12 +123,18 @@
         function send(no, cls, sn) {
 
             $.ajax({
+                // 跨網域使用 jsonp
+    //dataType: 'jsonp',
+    // 可以自訂回傳方法的字串。預設是 callback
+    //jsonp: 'callback',
+    // 規定只能用 GET
+    //type: "GET",
                 url: "https://script.google.com/macros/s/AKfycbyXVsjvgqMkHGRUKmzw7xq7VkAAaWT3DXQ45vpbAyUcKi_WM18/exec",
                 data: {
-                    "method ": "write",
-                    "emplyid": no,
-                    "location": sn,
-                    "locationNM": cls
+                    method : "write",
+                    emplyid: no,
+                    location: sn,
+                    locationNM: cls
                 },
                 success: function (response) {
                     if (response == "成功") {
