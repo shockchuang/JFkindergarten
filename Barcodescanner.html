@@ -29,6 +29,141 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: '微软雅黑';
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        li {
+            list-style: none
+        }
+
+        img {
+            border: none
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+        }
+
+        /* -------------------------摇奖排行榜-----------------------------------  */
+        .Top_Record {
+            background-color: rgba(255,255,255,0.8);
+        }
+
+        .topRec_List dl, .maquee {
+          
+            width: 90%;
+            overflow: hidden;
+            margin: 0 auto;
+            color: #7C7C7C;
+            font-size: 3.5vw;
+        }
+
+        .topRec_List dd {
+            float: left;
+            text-align: center;
+            border-bottom: 1px solid #1B96EE;
+            color: #1B96EE;
+        }
+
+        .topRec_List dl dd:nth-child(1) {
+            width: 15%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(2) {
+            width: 25%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(3) {
+            width: 20%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(4) {
+            width: 40%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .maquee {
+            height: 600px;
+        }
+
+        .topRec_List ul {
+            width: 100%;
+            height: 600px;
+        }
+
+        .topRec_List li {
+            width: 100%;
+            height: 120px;
+            line-height: 120px;
+            text-align: center;
+            font-size: 3.5vw;
+            border-bottom: 1px dashed #aaa;
+        }
+            /*.topRec_List li:nth-child(2n){ background:#077cd0}*/
+            .topRec_List li div {
+                float: left;
+            }
+
+                .topRec_List li div:nth-child(1) {
+                    width: 15%;
+                }
+
+                .topRec_List li div:nth-child(2) {
+                    width: 25%;
+                }
+
+                .topRec_List li div:nth-child(3) {
+                    width: 20%;
+                }
+
+                .topRec_List li div:nth-child(4) {
+                    width: 40%;
+                }
+
+        .apple a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .apple, .aa {
+            width: 90%;
+            height: 50px;
+            overflow: hidden;
+            margin: 30px auto;
+            border: 1px solid #1B96EE;
+        }
+
+            .apple a, .aa a {
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                text-indent: 20px;
+                color: #1B96EE;
+            }
+
+        .aa {
+            word-wrap: break-word;
+            line-height: 50px;
+            color: #1B96EE;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -56,6 +191,68 @@
                     <label>請掃描barcode：</label>
                     <input id="inputbarcode" type="text" />
 
+                </div>
+                <div class="Top_Record">
+                    <div class="topRec_List">
+                        <dl>
+                            <dd>編號</dd>
+                            <dd>小朋友姓名</dd>
+                            <dd>班級</dd>
+                            <dd>下課時間</dd>
+                        </dl>
+                        <div class="maquee">
+                            <ul class="maqueeUl">
+                                <!--<li>
+                                    <div>1</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>2</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>3</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>4</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>5</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>6</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>7</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>
+                                <li>
+                                    <div>8</div>
+                                    <div>王**</div>
+                                    <div>中了30元</div>
+                                    <div>2014/12/30 14:20</div>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> <!-- header content -->
@@ -92,7 +289,7 @@
         });
 
         function getRandomData(vbarcode) {
-
+            var maqueeUl = $(".maqueeUl").val();
             var a = {
                 barcode: vbarcode,
             };
@@ -106,11 +303,20 @@
                 } else {
                     var data_s = data.split("/");
                     const d = new Date();
+                    //if (parseInt(d.getMinutes()) < 10) {
+                    //    swal(data_s[1], d.getHours() + ':0' + d.getMinutes() + "  下課", "success");
+                    //} else {
+                    //    swal(data_s[1], d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+                    //}
+
+                    var vDiv ='';
                     if (parseInt(d.getMinutes()) < 10) {
-                        swal(data_s[1], d.getHours() + ':0' + d.getMinutes() + "  下課", "success");
+                        vDiv = '<li><div>' + data_s[0] + '</div><div>' + data_s[1] + '</div><div>' + data_s[2] + '</div><div>' + d.getHours() + ':0' + d.getMinutes() + '</div></li>';
                     } else {
-                        swal(data_s[1], d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+                        vDiv = '<li><div>' + data_s[0] + '</div><div>' + data_s[1] + '</div><div>' + data_s[2] + '</div><div>' + d.getHours() + ':' + d.getMinutes() + '</div></li>';
                     }
+
+                    $('.maqueeUl').prepend(vDiv);
                     
                     $("#inputbarcode").val('');
                     $("#inputbarcode").focus();

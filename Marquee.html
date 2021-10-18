@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 
     <style>
-        h3, ul, li {
+        /*h3, ul, li {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -47,11 +47,11 @@
         #scrollDiv {
             width: 100%;
             height: calc(100vh-500px);
-            overflow: hidden;
-          /*  text-align: center;*/
-        }
-            /*这里的高度和超出隐藏是必须的*/
-            #scrollDiv li {
+            overflow: hidden;*/
+        /*  text-align: center;*/
+        /*}*/
+        /*这里的高度和超出隐藏是必须的*/
+        /*#scrollDiv li {
                 height: 150px;
                 width: 100%;
                 padding: 0 20px;
@@ -93,9 +93,115 @@
                 width: 32px;
                 height: 22px;
                 margin-left: 4px
+            }*/
+
+
+
+    </style>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: '微软雅黑';
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        li {
+            list-style: none
+        }
+
+        img {
+            border: none
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+        }
+
+        /* -------------------------摇奖排行榜-----------------------------------  */
+        .Top_Record {
+            background-color: rgba(255,255,255,0.8);
+        }
+
+        .topRec_List dl, .maquee {
+            width: 90%;
+            overflow: hidden;
+            margin: 0 auto;
+            color: #7C7C7C;
+            font-size: 3.5vw;
+        }
+
+        .topRec_List dd {
+            float: left;
+            text-align: center;
+            border-bottom: 1px solid #1B96EE;
+            color: #1B96EE;
+        }
+
+        .topRec_List dl dd:nth-child(1) {
+            width: 15%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(2) {
+            width: 25%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(3) {
+            width: 20%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .topRec_List dl dd:nth-child(4) {
+            width: 40%;
+            height: 120px;
+            line-height: 120px;
+        }
+
+        .maquee {
+            height: 600px;
+        }
+
+        .topRec_List ul {
+            width: 100%;
+            height: 600px;
+        }
+
+        .topRec_List li {
+            width: 100%;
+            height: 120px;
+            line-height: 120px;
+            text-align: center;
+            font-size: 3.5vw;
+            border-bottom: 1px dashed #aaa;
+        }
+            /*.topRec_List li:nth-child(2n){ background:#077cd0}*/
+            .topRec_List li div {
+                float: left;
             }
 
+                .topRec_List li div:nth-child(1) {
+                    width: 15%;
+                }
 
+                .topRec_List li div:nth-child(2) {
+                    width: 25%;
+                }
+
+                .topRec_List li div:nth-child(3) {
+                    width: 20%;
+                }
+
+                .topRec_List li div:nth-child(4) {
+                    width: 40%;
+                }
     </style>
 
 </head>
@@ -121,15 +227,78 @@
 
         <div id="home">
             <div class="container-fluid mainmenu">
-                <div class="scrollbox">
-                    <div id="scrollDiv">
-                        <!--<ul>
-                            <li><div>企鵝班 XXX 15:30 下課</div></li>
-                            <li><div>企鵝班 XXX 15:30 下課</div></li>
-                            <li><div>企鵝班 XXX 15:30 下課</div></li>
-                            <li><div>企鵝班 XXX 15:30 下課</div></li>
-                            <li><div>企鵝班 XXX 15:30 下課</div></li>
-                        </ul>-->
+                <!--<div class="scrollbox">
+        <div id="scrollDiv">
+            <ul>
+                <li><div>企鵝班 XXX 15:30 下課</div></li>
+                <li><div>企鵝班 XXX 15:30 下課</div></li>
+                <li><div>企鵝班 XXX 15:30 下課</div></li>
+                <li><div>企鵝班 XXX 15:30 下課</div></li>
+                <li><div>企鵝班 XXX 15:30 下課</div></li>
+            </ul>
+        </div>
+    </div>-->
+
+                <div class="Top_Record">
+                    <div class="topRec_List">
+                        <dl>
+                            <dd>編號</dd>
+                            <dd>小朋友姓名</dd>
+                            <dd>班級</dd>
+                            <dd>下課時間</dd>
+                        </dl>
+                        <div class="maquee">
+                            <ul class="maqueeUl">
+                                <!--<li>
+                        <div>1</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>2</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>3</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>4</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>5</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>6</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>7</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>8</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>-->
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -173,23 +342,30 @@
                 sheetTag: 0,
             };
             $.get('https://script.google.com/macros/s/AKfycbzYSDvvRiyv9wkxq0xNszbDSLguxHmoXn1ZflIqxBB15xak5A4q/exec', a, function (data) {
-                $("#scrollDiv").empty();
+                $(".maqueeUl").empty();
                 var arrNo = data.data.編號;
                 var arrNM = data.data.小朋友姓名;
                 var arrClass = data.data.班級;
                 var arrTime = data.data.下課時間;
-                var vUl = '<ul>';
+            //    var vUl = '<ul>';
+                var vDiv = '';
                 for (var i = arrNo.length-5; i < arrNo.length; i++) {
                     const event = new Date(arrTime[i]);
                     if (event.toLocaleString().startsWith(sdate)) {
-                        vUl += '<li><div>' + arrClass[i] + '&nbsp;' + arrNM[i] + '&nbsp;' + event.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + '&nbsp;下課</div></li>';
-                    }
-                  
-                }
-                vUl += '</ul>';
-                $('#scrollDiv').append(vUl);
+                        //vUl += '<li><div>' + arrClass[i] + '&nbsp;' + arrNM[i] + '&nbsp;' + event.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + '&nbsp;下課</div></li>';
 
-                $("#scrollDiv").Scroll({ line: 1, speed: 500, timer: 3000, up: "but_up", down: "but_down" });
+                        vDiv += '<li><div>' + arrNo[i] + '</div><div>' + arrNM[i] + '</div><div>' + arrClass[i] + '</div><div>' + event.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + '</div></li>';
+                    }
+                }
+
+                vDiv += '<li><div>--</div><div>--</div><div>-end-</div><div>--</div></li>';
+                //vUl += '</ul>';
+                //$('#scrollDiv').append(vUl);
+
+                //$("#scrollDiv").Scroll({ line: 1, speed: 500, timer: 3000, up: "but_up", down: "but_down" });
+
+                $('.maqueeUl').append(vDiv);
+
             });
         }
 
@@ -209,7 +385,18 @@
         //document.onmousemove = ReCalculate;
         //ReCalculate();
 
-        var timer = setInterval(getRandomData, 10000);　
+        var timer = setInterval(getRandomData, 20000);　
+
+        function autoScroll(obj){
+            $(obj).find("ul").animate({
+                marginTop: "-120px"
+            }, 500, function () {
+                $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+            })
+        }  
+        $(function () {
+            setInterval('autoScroll(".maquee")', 3000);
+        }) 
 
     </script>
 
