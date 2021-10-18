@@ -295,6 +295,9 @@
             };
             $.get('https://script.google.com/macros/s/AKfycbwTJQW1j8k1Q8jGCWh0cuBLA20GMM1opd9pVf5EHcYMIxXWvkQa/exec', a, function (data) {
                // console.log(data);
+                $("#inputbarcode").val('');
+                $("#inputbarcode").focus();
+
 
                 if (data == "比對失敗") {
                     swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
