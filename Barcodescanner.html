@@ -282,11 +282,24 @@
 
         $("#inputbarcode").focus();
 
-        $("#inputbarcode").change(function () {
-            var value = $(this).val();
-           // console.log(value.length);
-            getRandomData(value);
+        $('#inputbarcode').blur(function () {
+            $('#inputbarcode').focus(); //forces it to stay active
         });
+
+        $('#inputbarcode').keyup(function (e) {
+            if (e.keyCode === 13) {//key 13 is enter, which the barcode scanner does
+                var value = $(this).val();
+                getRandomData(value);
+                $("#inputbarcode").val('');
+                $("#inputbarcode").focus();
+            }
+        });
+
+        //$("#inputbarcode").change(function () {
+        //    var value = $(this).val();
+        //   // console.log(value.length);
+        //    getRandomData(value);
+        //});
 
         function getRandomData(vbarcode) {
             var maqueeUl = $(".maqueeUl").val();
