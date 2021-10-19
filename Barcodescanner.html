@@ -189,7 +189,7 @@
             <div class="container-fluid mainmenu">
                 <div id="show" style="background-color:white; font-size:2.5vw;text-align:center;">
                     <label>請掃描barcode：</label>
-                    <input id="inputbarcode" type="text" />
+                    <input id="inputbarcode" type="text" autofocus/>
 
                 </div>
                 <div class="Top_Record">
@@ -280,26 +280,25 @@
             location.href = 'index.html';
         });
 
-        $("#inputbarcode").focus();
+      //  $("#inputbarcode").focus();
 
-        $('#inputbarcode').blur(function () {
-            $('#inputbarcode').focus(); //forces it to stay active
-        });
-
-        $('#inputbarcode').keyup(function (e) {
-            if (e.keyCode === 13) {//key 13 is enter, which the barcode scanner does
-                var value = $(this).val();
-                getRandomData(value);
-                $("#inputbarcode").val('');
-                $("#inputbarcode").focus();
-            }
-        });
-
-        //$("#inputbarcode").change(function () {
-        //    var value = $(this).val();
-        //   // console.log(value.length);
-        //    getRandomData(value);
+        //$('#inputbarcode').blur(function () {
+        //    $('#inputbarcode').focus(); //forces it to stay active
         //});
+
+        //$('#inputbarcode').keyup(function (e) {
+        //    if (e.keyCode === 13) {//key 13 is enter, which the barcode scanner does
+        //        var value = $(this).val();
+        //        getRandomData(value);
+        //        $("#inputbarcode").val('');
+        //        $("#inputbarcode").focus();
+        //    }
+        //});
+
+        $("#inputbarcode").change(function () {
+            var value = $(this).val();
+            getRandomData(value);
+        });
 
         function getRandomData(vbarcode) {
             var maqueeUl = $(".maqueeUl").val();
@@ -309,13 +308,13 @@
             $.get('https://script.google.com/macros/s/AKfycbwTJQW1j8k1Q8jGCWh0cuBLA20GMM1opd9pVf5EHcYMIxXWvkQa/exec', a, function (data) {
                // console.log(data);
                 $("#inputbarcode").val('');
-                $("#inputbarcode").focus();
+           //     $("#inputbarcode").focus();
 
 
                 if (data == "比對失敗") {
                     swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
                     $("#inputbarcode").val('');
-                    $("#inputbarcode").focus();
+               //     $("#inputbarcode").focus();
                 } else {
                     var data_s = data.split("/");
                     const d = new Date();
@@ -335,13 +334,14 @@
                     $('.maqueeUl').prepend(vDiv);
                     
                     $("#inputbarcode").val('');
-                    $("#inputbarcode").focus();
+                 //   $("#inputbarcode").focus();
                 }
 
 
             });
         }
 
+       
        //getRandomData('109A020021001');
 
     </script>
