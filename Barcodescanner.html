@@ -286,8 +286,8 @@
         //    $('#inputbarcode').focus(); //forces it to stay active
         //});
 
-        //$('#inputbarcode').keyup(function (e) {
-        //    if (e.keyCode === 13) {//key 13 is enter, which the barcode scanner does
+        //$('#inputbarcode').keypress(function (e) {
+        //    if (e.keyCode === 13 || e.keyCode === 9) {//key 13 is enter, which the barcode scanner does
         //        var value = $(this).val();
         //        getRandomData(value);
         //        $("#inputbarcode").val('');
@@ -295,9 +295,19 @@
         //    }
         //});
 
-        $("#inputbarcode").change(function () {
-            var value = $(this).val();
-            getRandomData(value);
+        //$("#inputbarcode").change(function () {
+        //    var value = $(this).val();
+        //    getRandomData(value);
+        //});
+
+        $('body').on('keydown', '#inputbarcode', function (e) {
+            if (e.which === 13 || e.which == 9) {
+                console.log(' in tab');
+                var value = $(this).val();
+                getRandomData(value);
+                e.preventDefault();
+                $("#inputbarcode").focus();
+            }
         });
 
         function getRandomData(vbarcode) {
