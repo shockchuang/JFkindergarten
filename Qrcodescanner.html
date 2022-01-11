@@ -60,6 +60,7 @@
     <script type="text/javascript">
         function onQRCodeScanned(scannedText) {
            // location.href = 'index.html?' + scannedText;
+            swal(scannedText, "", "success");
             getRandomData(scannedText);
         }
 
