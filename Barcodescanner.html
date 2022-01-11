@@ -302,9 +302,10 @@
 
         $('body').on('keydown', '#inputbarcode', function (e) {
             if (e.which === 13 || e.which == 9) {
-                console.log(' in tab');
+               // console.log(' in tab');
                 var value = $(this).val();
                 getRandomData(value);
+                getRandomData2(value);
                 e.preventDefault();
                 $("#inputbarcode").focus();
             }
@@ -351,7 +352,14 @@
             });
         }
 
-       
+       function getRandomData2(vbarcode) {
+           var vSchool = 'jf035500365';          
+            $.ajax({
+                type: "GET",
+                url: 'http://childpickup.shockcancode.com/api/GlobalAPI/GETBARCODE/?BARCODE=' + vbarcode + '&SCHOOL=' + vSchool,
+                dataType: 'jsonp'
+            });
+        }
        //getRandomData('109A020021001');
 
     </script>
