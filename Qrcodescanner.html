@@ -120,24 +120,43 @@
         }
 
         function getRandomData(vbarcode) {
-            var a = {
-                barcode: vbarcode,
-            };
-            $.get('https://script.google.com/macros/s/AKfycbwTJQW1j8k1Q8jGCWh0cuBLA20GMM1opd9pVf5EHcYMIxXWvkQa/exec', a, function (data) {
-                if (data == "比對失敗") {
-                    swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
-                    $("#inputbarcode").val('');
-                    $("#inputbarcode").focus();
-                } else {
-                    var data_s = data.split("/");
-                    const d = new Date();
-                    if (parseInt(d.getMinutes()) < 10) {
-                        swal(data_s[1], d.getHours() + ':0' + d.getMinutes() + "  下課", "success");
+            var strUrl = location.search;
+            var getPara, ParaVal, vSchool;
+            //  console.log(strUrl);
+            if (strUrl.indexOf("?") != -1) {
+                var getSearch = strUrl.split("?");
+                getPara = getSearch[1].split("&");
+                ParaVal = getPara[1].split("=");
+                vschool = ParaVal[1];
+            }
+            $.ajax({
+                type: "POST",
+                url: '../../api/GlobalAPI/GETBARCODE/?BARCODE=' + vbarcode + '&SCHOOL=' + vSchool,
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "json",
+                async: false,
+                success: function (response) {
+                    if (response.length > 0) {
+                        const d = new Date();
+                        var vDiv = '';
+                        if (parseInt(d.getMinutes()) < 10) {
+                            swal(response[0].STUDENTNM + " 下課時間：" + d.getHours() + ':0' + d.getMinutes(), "", "success");
+                        } else {
+                            swal(response[0].STUDENTNM + " 下課時間：" + d.getHours() + ':' + d.getMinutes(), "", "success");
+                        }
                     } else {
-                        swal(data_s[1], d.getHours() + ':' + d.getMinutes() + "  下課", "success");
+                        swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
                     }
+                },
+                error: function (response) {
+                    mywarnalert(response.responseJSON.ExceptionMessage);
                 }
             });
+
+
+
+
+
         }
 
         $('#BackHome').click(function () {
