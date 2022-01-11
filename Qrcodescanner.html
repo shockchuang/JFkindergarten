@@ -130,34 +130,12 @@
                 ParaVal = getPara[1].split("=");
                 vschool = ParaVal[1];
             }
+            
             $.ajax({
-                type: "POST",
-                url: '../../api/GlobalAPI/GETBARCODE/?BARCODE=' + vbarcode + '&SCHOOL=' + vSchool,
-                contentType: "application/x-www-form-urlencoded",
-                dataType: "json",
-                async: false,
-                success: function (response) {
-                    if (response.length > 0) {
-                        const d = new Date();
-                        var vDiv = '';
-                        if (parseInt(d.getMinutes()) < 10) {
-                            swal(response[0].STUDENTNM + " 下課時間：" + d.getHours() + ':0' + d.getMinutes(), "", "success");
-                        } else {
-                            swal(response[0].STUDENTNM + " 下課時間：" + d.getHours() + ':' + d.getMinutes(), "", "success");
-                        }
-                    } else {
-                        swal("掃描失敗", "條碼不存在，請確認後再重新掃描!!", "error");
-                    }
-                },
-                error: function (response) {
-                    mywarnalert(response.responseJSON.ExceptionMessage);
-                }
+                type: "GET",
+                url: 'http://childpickup.shockcancode.com/api/GlobalAPI/GETBARCODE/?BARCODE=' + vbarcode + '&SCHOOL=' + vSchool,
+                dataType: 'jsonp'
             });
-
-
-
-
-
         }
 
         $('#BackHome').click(function () {
